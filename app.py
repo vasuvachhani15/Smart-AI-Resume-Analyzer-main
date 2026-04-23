@@ -1160,15 +1160,12 @@ class ResumeApp:
         st.markdown(f"""
             <div class="profile-section">
                 <img src="{image_base64 if image_base64 else 'https://avatars.githubusercontent.com/Hunterdii'}"
-                     alt="Het Patel"
+                     alt="Victor Joseph"
                      class="profile-image"
                      onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/Hunterdii';">
                 <h2 class="profile-name">Het Patel (Hunterdii)</h2>
                 <p class="profile-title">Full Stack Developer & AI/ML Enthusiast</p>
                 <div class="social-links">
-                    <a href="https://github.com/Hunterdii" class="social-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
                     <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" class="social-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
@@ -1177,10 +1174,11 @@ class ResumeApp:
                     </a>
                 </div>
                 <p class="bio-text">
-                    Hello! I'm a passionate Full Stack Developer with expertise in AI and Machine Learning.
-                    I created Smart Resume AI to revolutionize how job seekers approach their career journey.
-                    With my background in both software development and AI, I've designed this platform to
-                    provide intelligent, data-driven insights for resume optimization.
+                    Hello! I am a final year student passionate about bridging the gap between academia and the industry. 
+                    I developed Smart Resume AI as my capstone project to help fellow students and job seekers 
+                    navigate the competitive tech market. By leveraging Google Gemini AI, I've built this platform 
+                    to provide the same level of resume optimization that professional career coaches offer, 
+                    making career success accessible to everyone.
                 </p>
             </div>
         """, unsafe_allow_html=True)
