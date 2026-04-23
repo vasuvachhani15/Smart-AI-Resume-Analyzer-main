@@ -1164,12 +1164,12 @@ class ResumeApp:
                      class="profile-image"
                      onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/Hunterdii';">
                 <h2 class="profile-name">Victor Joseph</h2>
-                <p class="profile-title">Full Stack Developer & AI/ML Enthusiast</p>
+                <p class="profile-title">Final Year Capstone Creator</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" class="social-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:hunterdii9879@gmail.com" class="social-link" target="_blank">
+                    <a href="mailto:victorship2003@gmail.com" class="social-link" target="_blank">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
