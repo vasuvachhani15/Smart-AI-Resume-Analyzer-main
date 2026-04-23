@@ -57,11 +57,11 @@ def get_filter_options():
         ],
         "salary_ranges": [
             {"id": "all", "text": "All Ranges"},
-            {"id": "0-3", "text": "0-3 LPA"},
-            {"id": "3-6", "text": "3-6 LPA"},
-            {"id": "6-10", "text": "6-10 LPA"},
-            {"id": "10-15", "text": "10-15 LPA"},
-            {"id": "15+", "text": "15+ LPA"}
+            {"id": "0-30k", "text": "Up to €30k"},
+            {"id": "30k-50k", "text": "€30k - €50k"},
+            {"id": "50k-80k", "text": "€50k - €80k"},
+            {"id": "80k-120k", "text": "€80k - €120k"},
+            {"id": "120k+", "text": "€120k+"}
         ],
         "job_types": [
             {"id": "all", "text": "All Types"},
@@ -120,9 +120,9 @@ def render_company_section():
     # Featured Companies
     st.markdown("### 🏢 Featured Companies")
     
-    tabs = st.tabs(["All Companies", "Tech Giants", "Indian Tech", "Global Corps"])
+    tabs = st.tabs(["All Companies", "Tech Giants", "Irish Tech", "Global Corps"])
     
-    categories = [None, "tech", "indian_tech", "global_corps"]
+    categories = [None, "tech", "irish_tech", "global_corps"]
     for tab, category in zip(tabs, categories):
         with tab:
             companies = get_featured_companies(category)
@@ -149,6 +149,28 @@ def render_company_section():
 def render_market_insights():
     """Render job market insights section"""
     insights = get_market_insights()
+    
+    # OVERRIDE the top locations here to show European hubs instead of the default database ones
+    euro_locations = [
+        {"name": "Dublin, IE", "jobs": "15,000+", "icon": "🏢"},
+        {"name": "London, UK", "jobs": "45,000+", "icon": "🏢"},
+        {"name": "Berlin, DE", "jobs": "25,000+", "icon": "🏢"},
+        {"name": "Amsterdam, NL", "jobs": "20,000+", "icon": "🏢"},
+        {"name": "Paris, FR", "jobs": "18,000+", "icon": "🏢"},
+        {"name": "Cork, IE", "jobs": "5,000+", "icon": "🏢"},
+        {"name": "Galway, IE", "jobs": "3,000+", "icon": "🏢"},
+        {"name": "Belfast, UK", "jobs": "4,000+", "icon": "🏢"},
+        {"name": "Remote (EU)", "jobs": "50,000+", "icon": "🏠"}
+    ]
+    
+    # OVERRIDE salary insights to show Euros
+    euro_salaries = [
+        {"role": "Software Engineer", "range": "€45k - €90k", "experience": "2-5 Yrs"},
+        {"role": "Data Scientist", "range": "€55k - €110k", "experience": "3-6 Yrs"},
+        {"role": "Product Manager", "range": "€60k - €120k", "experience": "4-8 Yrs"},
+        {"role": "DevOps Engineer", "range": "€50k - €100k", "experience": "3-7 Yrs"},
+        {"role": "UI/UX Designer", "range": "€40k - €80k", "experience": "2-5 Yrs"}
+    ]
     
     st.markdown("""
         <style>
@@ -253,10 +275,10 @@ def render_market_insights():
     
     with tabs[1]:
         st.markdown('<div class="insights-grid">', unsafe_allow_html=True)
-        for location in insights["top_locations"]:
+        for location in euro_locations:
             st.markdown(f"""
                 <div class="insight-card">
-                    <i class="{location['icon']} insight-icon"></i>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">{location['icon']}</div>
                     <h4>{location['name']}</h4>
                     <p>Available Jobs: {location['jobs']}</p>
                 </div>
@@ -273,7 +295,7 @@ def render_market_insights():
             "UI/UX Designer": "fas fa-paint-brush"
         }
         
-        for insight in insights["salary_insights"]:
+        for insight in euro_salaries:
             role = insight['role']
             icon = role_icons.get(role, "fas fa-briefcase")
             
@@ -284,7 +306,7 @@ def render_market_insights():
                         <div>
                             <h3 class="role-title">{role}</h3>
                             <div class="salary-details">
-                                <span class="salary-tag">₹ {insight['range']}</span>
+                                <span class="salary-tag">{insight['range']}</span>
                                 <span class="experience-tag">
                                     <i class="fas fa-history"></i> {insight['experience']}
                                 </span>
@@ -364,7 +386,7 @@ def render_job_search():
             with col2:
                 location = st.text_input("Location", 
                                        value="",
-                                       placeholder="e.g. Bangalore, Karnataka")
+                                       placeholder="e.g. Dublin, Ireland")
                 
                 if location and len(location) >= 2:
                     # Use enhanced location filtering
