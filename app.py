@@ -485,9 +485,6 @@ class ResumeApp:
                 Powered by <b>Streamlit</b> and <b>Google Gemini AI</b> | Developed by 
                 <b>Victor</b>
             </p>
-            <p style='text-align: center; font-size: 12px; color: #888888;'>
-                "Every star counts! If you find this project helpful, please consider starring the repo to help it reach more people."
-            </p>
             """, unsafe_allow_html=True)
 
     def load_image(self, image_name):
