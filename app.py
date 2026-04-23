@@ -1166,9 +1166,6 @@ class ResumeApp:
                 <h2 class="profile-name">Victor Joseph</h2>
                 <p class="profile-title">Final Year Capstone Creator</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
                     <a href="mailto:victorship2003@gmail.com" class="social-link" target="_blank">
                         <i class="fas fa-envelope"></i>
                     </a>
@@ -2925,7 +2922,7 @@ class ResumeApp:
                                 st.error(f"Error during login: {str(e)}")
         
             # Display the repository notification in the sidebar
-            self.show_repo_notification()
+            
 
         # Force home page on first load
         if 'initial_load' not in st.session_state:
