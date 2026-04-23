@@ -473,13 +473,28 @@ class ResumeApp:
         with col2:
             # GitHub star button with lottie animation
             st.markdown("""
+            <div style='display: flex; justify-content: center; align-items: center; margin-bottom: 10px;'>
+                <a href='https://github.com/Hunterdii/Smart-AI-Resume-Analyzer' target='_blank' style='text-decoration: none;'>
+                    <div style='display: flex; align-items: center; background-color: #24292e; padding: 5px 10px; border-radius: 5px; transition: all 0.3s ease;'>
+                        <svg height="16" width="16" viewBox="0 0 16 16" version="1.1" style='margin-right: 5px;'>
+                            <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" fill="gold"></path>
+                        </svg>
+                        <span style='color: white; font-size: 14px;'>Star this repo</span>
+                    </div>
+                </a>
+            </div>
             """, unsafe_allow_html=True)
             
             # Footer text
             st.markdown("""
             <p style='text-align: center;'>
                 Powered by <b>Streamlit</b> and <b>Google Gemini AI</b> | Developed by 
-                <b>Victor</b>
+                <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" target="_blank" style='text-decoration: none; color: #FFFFFF'>
+                    <b>Het Patel (Hunterdii)</b>
+                </a>
+            </p>
+            <p style='text-align: center; font-size: 12px; color: #888888;'>
+                "Every star counts! If you find this project helpful, please consider starring the repo to help it reach more people."
             </p>
             """, unsafe_allow_html=True)
 
@@ -527,6 +542,13 @@ class ResumeApp:
             return None
         finally:
             conn.close()
+
+    def render_dashboard(self):
+        """Render the dashboard page"""
+        self.dashboard_manager.render_dashboard()
+
+        st.toast("Check out these repositories: [Awesome Hacking](https://github.com/Hunterdii/Awesome-Hacking)", icon="ℹ️")
+
 
     def render_empty_state(self, icon, message):
         """Render an empty state with icon and message"""
@@ -682,7 +704,7 @@ class ResumeApp:
                                        height=100,
                                        help="List your main responsibilities, one per line")
                 exp['responsibilities'] = [r.strip()
-                                           for r in resp_text.split('\n') if r.strip()]
+                                                   for r in resp_text.split('\n') if r.strip()]
 
                 # Achievements
                 st.markdown("##### Key Achievements")
@@ -693,7 +715,7 @@ class ResumeApp:
                                        height=100,
                                        help="List your notable achievements, one per line")
                 exp['achievements'] = [a.strip()
-                                       for a in achv_text.split('\n') if a.strip()]
+                                               for a in achv_text.split('\n') if a.strip()]
 
                 if st.button("Remove Experience", key=f"remove_exp_{idx}"):
                     st.session_state.form_data['experiences'].pop(idx)
@@ -741,7 +763,7 @@ class ResumeApp:
                                             height=100,
                                             help="List your main responsibilities in the project")
                 proj['responsibilities'] = [r.strip()
-                                            for r in proj_resp_text.split('\n') if r.strip()]
+                                                    for r in proj_resp_text.split('\n') if r.strip()]
 
                 # Project Achievements
                 st.markdown("##### Key Achievements")
@@ -752,7 +774,7 @@ class ResumeApp:
                                             height=100,
                                             help="List the project's key achievements and your contributions")
                 proj['achievements'] = [a.strip()
-                                        for a in proj_achv_text.split('\n') if a.strip()]
+                                                for a in proj_achv_text.split('\n') if a.strip()]
 
                 proj['link'] = st.text_input("Project Link (optional)", key=f"proj_link_{idx}",
                                            value=proj.get('link', ''),
@@ -816,7 +838,7 @@ class ResumeApp:
                                            height=100,
                                            help="List academic achievements, relevant coursework, or activities")
                 edu['achievements'] = [a.strip()
-                                       for a in edu_achv_text.split('\n') if a.strip()]
+                                               for a in edu_achv_text.split('\n') if a.strip()]
 
                 if st.button("Remove Education", key=f"remove_edu_{idx}"):
                     st.session_state.form_data['education'].pop(idx)
@@ -978,6 +1000,8 @@ class ResumeApp:
                 print(f"Error preparing resume data: {str(e)}")
                 print(f"Full traceback: {traceback.format_exc()}")
                 st.error(f"❌ Error preparing resume data: {str(e)}")
+
+        st.toast("Check out these repositories: [30-Days-Of-Rust](https://github.com/Hunterdii/30-Days-Of-Rust)", icon="ℹ️")
 
     def render_about(self):
         """Render the about page"""
@@ -1215,6 +1239,7 @@ class ResumeApp:
             </div>
         """, unsafe_allow_html=True)
 
+        st.toast("Check out these repositories: [Iriswise](https://github.com/Hunterdii/Iriswise)", icon="ℹ️")
 
     def render_analyzer(self):
         """Render the resume analyzer page"""
@@ -2429,12 +2454,12 @@ class ResumeApp:
                                         <div style="display: flex; flex-wrap: wrap; gap: 20px;">
                                             <div style="flex: 1; min-width: 200px;">
                                                 <p style="color: #ffffff;"><strong>Job Role:</strong> {job_role if job_role else "Not specified"}</p>
-                                                <p style="color: #ffffff;"><strong>Analysis Date:</strong> {current_date}</p>                                                                                                                             </div>
+                                                <p style="color: #ffffff;"><strong>Analysis Date:</strong> {current_date}</p>                                                                                                                                        </div>
                                             <div style="flex: 1; min-width: 200px;">
                                                 <p style="color: #ffffff;"><strong>AI Model:</strong> {model_used}</p>
                                                 <p style="color: #ffffff;"><strong>Overall Score:</strong> {resume_score}/100 - {"Excellent" if resume_score >= 80 else "Good" if resume_score >= 60 else "Needs Improvement"}</p>
                                                 {f'<p style="color: #4CAF50;"><strong>✓ Custom Job Description Used</strong></p>' if st.session_state.get('used_custom_job_desc', False) else ''}
-                                            </div>
+                                    </div>
                                     """, unsafe_allow_html=True)
                                     
                                     # Add gauge charts for scores
@@ -2773,14 +2798,8 @@ class ResumeApp:
                             import traceback as tb
                             st.code(tb.format_exc())
 
-    def render_dashboard(self):
-        """Render the dashboard page"""
-        st.title("Dashboard 📊")
-        
-        try:
-            self.dashboard_manager.render_dashboard()
-        except Exception as e:
-            st.error(f"Dashboard is currently unavailable: {str(e)}")
+        st.toast("Check out these repositories: [Awesome Java](https://github.com/Hunterdii/Awesome-Java)", icon="ℹ️")
+
 
     def render_home(self):
         apply_modern_styles()
@@ -2814,6 +2833,8 @@ class ResumeApp:
         
         st.markdown('</div>', unsafe_allow_html=True)
         
+        st.toast("Check out these repositories: [AI-Nexus(AI/ML)](https://github.com/Hunterdii/AI-Nexus)", icon="ℹ️")
+
         # Call-to-Action with Streamlit navigation
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
@@ -2828,6 +2849,8 @@ class ResumeApp:
     def render_job_search(self):
         """Render the job search page"""
         render_job_search()
+
+        st.toast("Check out these repositories: [GeeksforGeeks-POTD](https://github.com/Hunterdii/GeeksforGeeks-POTD)", icon="ℹ️")
 
 
     def render_feedback_page(self):
@@ -2851,6 +2874,8 @@ class ResumeApp:
             
         with stats_tab:
             feedback_manager.render_feedback_stats()
+
+        st.toast("Check out these repositories: [TryHackMe Free Rooms](https://github.com/Hunterdii/tryhackme-free-rooms)", icon="ℹ️")
 
 
     def show_repo_notification(self):
@@ -2876,7 +2901,7 @@ class ResumeApp:
     <ul style="margin-top: 0; padding-left: 20px;">
         <li><a href="https://github.com/Hunterdii/AI-Nexus" target="_blank" style="color: #4CAF50;">AI Nexus</a></li>
     </ul>
-    
+    <div style="margin-top: 10px;">If you find this project helpful, please consider ⭐ starring the repo!</div>
 </div>
 """
         st.sidebar.markdown(message, unsafe_allow_html=True)
@@ -2933,7 +2958,7 @@ class ResumeApp:
                                 st.error(f"Error during login: {str(e)}")
         
             # Display the repository notification in the sidebar
-            # self.show_repo_notification() # <- Commented out to remove the UI notification!
+            self.show_repo_notification()
 
         # Force home page on first load
         if 'initial_load' not in st.session_state:
