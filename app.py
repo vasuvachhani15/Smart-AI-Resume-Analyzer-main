@@ -682,7 +682,7 @@ class ResumeApp:
                                        height=100,
                                        help="List your main responsibilities, one per line")
                 exp['responsibilities'] = [r.strip()
-                                                   for r in resp_text.split('\n') if r.strip()]
+                                           for r in resp_text.split('\n') if r.strip()]
 
                 # Achievements
                 st.markdown("##### Key Achievements")
@@ -693,7 +693,7 @@ class ResumeApp:
                                        height=100,
                                        help="List your notable achievements, one per line")
                 exp['achievements'] = [a.strip()
-                                               for a in achv_text.split('\n') if a.strip()]
+                                       for a in achv_text.split('\n') if a.strip()]
 
                 if st.button("Remove Experience", key=f"remove_exp_{idx}"):
                     st.session_state.form_data['experiences'].pop(idx)
@@ -741,7 +741,7 @@ class ResumeApp:
                                             height=100,
                                             help="List your main responsibilities in the project")
                 proj['responsibilities'] = [r.strip()
-                                                    for r in proj_resp_text.split('\n') if r.strip()]
+                                            for r in proj_resp_text.split('\n') if r.strip()]
 
                 # Project Achievements
                 st.markdown("##### Key Achievements")
@@ -752,7 +752,7 @@ class ResumeApp:
                                             height=100,
                                             help="List the project's key achievements and your contributions")
                 proj['achievements'] = [a.strip()
-                                                for a in proj_achv_text.split('\n') if a.strip()]
+                                        for a in proj_achv_text.split('\n') if a.strip()]
 
                 proj['link'] = st.text_input("Project Link (optional)", key=f"proj_link_{idx}",
                                            value=proj.get('link', ''),
@@ -816,7 +816,7 @@ class ResumeApp:
                                            height=100,
                                            help="List academic achievements, relevant coursework, or activities")
                 edu['achievements'] = [a.strip()
-                                               for a in edu_achv_text.split('\n') if a.strip()]
+                                       for a in edu_achv_text.split('\n') if a.strip()]
 
                 if st.button("Remove Education", key=f"remove_edu_{idx}"):
                     st.session_state.form_data['education'].pop(idx)
@@ -2429,12 +2429,12 @@ class ResumeApp:
                                         <div style="display: flex; flex-wrap: wrap; gap: 20px;">
                                             <div style="flex: 1; min-width: 200px;">
                                                 <p style="color: #ffffff;"><strong>Job Role:</strong> {job_role if job_role else "Not specified"}</p>
-                                                <p style="color: #ffffff;"><strong>Analysis Date:</strong> {current_date}</p>                                                                                                                                        </div>
+                                                <p style="color: #ffffff;"><strong>Analysis Date:</strong> {current_date}</p>                                                                                                                             </div>
                                             <div style="flex: 1; min-width: 200px;">
                                                 <p style="color: #ffffff;"><strong>AI Model:</strong> {model_used}</p>
                                                 <p style="color: #ffffff;"><strong>Overall Score:</strong> {resume_score}/100 - {"Excellent" if resume_score >= 80 else "Good" if resume_score >= 60 else "Needs Improvement"}</p>
                                                 {f'<p style="color: #4CAF50;"><strong>✓ Custom Job Description Used</strong></p>' if st.session_state.get('used_custom_job_desc', False) else ''}
-                                    </div>
+                                            </div>
                                     """, unsafe_allow_html=True)
                                     
                                     # Add gauge charts for scores
@@ -2773,6 +2773,14 @@ class ResumeApp:
                             import traceback as tb
                             st.code(tb.format_exc())
 
+    def render_dashboard(self):
+        """Render the dashboard page"""
+        st.title("Dashboard 📊")
+        
+        try:
+            self.dashboard_manager.render_dashboard()
+        except Exception as e:
+            st.error(f"Dashboard is currently unavailable: {str(e)}")
 
     def render_home(self):
         apply_modern_styles()
@@ -2925,7 +2933,7 @@ class ResumeApp:
                                 st.error(f"Error during login: {str(e)}")
         
             # Display the repository notification in the sidebar
-            self.show_repo_notification()
+            # self.show_repo_notification() # <- Commented out to remove the UI notification!
 
         # Force home page on first load
         if 'initial_load' not in st.session_state:
