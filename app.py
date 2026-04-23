@@ -124,7 +124,9 @@ class ResumeApp:
                 'average_score': 0
             }
 
-    def load_lottie_url(self, url: str):
+    @staticmethod
+    @st.cache_data
+    def load_lottie_url(url: str):
         """Load Lottie animation from URL"""
         r = requests.get(url)
         if r.status_code != 200:
