@@ -57,141 +57,73 @@ JOB_SUGGESTIONS = [
     {"text": "Technical Support Specialist", "icon": "🎧"}
 ]
 
-
-# Location suggestions - organized by states and major cities
+# Location suggestions - organized by European regions and major cities
 LOCATION_SUGGESTIONS = [
     # Work modes
     {"text": "Remote", "icon": "🏠", "type": "work_mode"},
     {"text": "Work from Home", "icon": "🏠", "type": "work_mode"},
     {"text": "Hybrid", "icon": "🏢", "type": "work_mode"},
     
-    # Major tech hubs
-    {"text": "Bangalore", "icon": "📍", "type": "city", "state": "Karnataka"},
-    {"text": "Mumbai", "icon": "📍", "type": "city", "state": "Maharashtra"},
-    {"text": "Delhi", "icon": "📍", "type": "city", "state": "Delhi"},
-    {"text": "Hyderabad", "icon": "📍", "type": "city", "state": "Telangana"},
-    {"text": "Pune", "icon": "📍", "type": "city", "state": "Maharashtra"},
-    {"text": "Chennai", "icon": "📍", "type": "city", "state": "Tamil Nadu"},
-    {"text": "Noida", "icon": "📍", "type": "city", "state": "Uttar Pradesh"},
-    {"text": "Gurgaon", "icon": "📍", "type": "city", "state": "Haryana"},
+    # Major tech hubs (Top Level)
+    {"text": "Dublin", "icon": "📍", "type": "city", "state": "Ireland"},
+    {"text": "London", "icon": "📍", "type": "city", "state": "United Kingdom"},
+    {"text": "Berlin", "icon": "📍", "type": "city", "state": "Germany"},
+    {"text": "Amsterdam", "icon": "📍", "type": "city", "state": "Netherlands"},
+    {"text": "Paris", "icon": "📍", "type": "city", "state": "France"},
+    {"text": "Cork", "icon": "📍", "type": "city", "state": "Ireland"},
     
-    # States
-    {"text": "Karnataka", "icon": "🗺️", "type": "state"},
-    {"text": "Maharashtra", "icon": "🗺️", "type": "state"},
-    {"text": "Tamil Nadu", "icon": "🗺️", "type": "state"},
-    {"text": "Telangana", "icon": "🗺️", "type": "state"},
-    {"text": "Delhi", "icon": "🗺️", "type": "state"},
-    {"text": "Uttar Pradesh", "icon": "🗺️", "type": "state"},
-    {"text": "Gujarat", "icon": "🗺️", "type": "state"},
-    {"text": "Rajasthan", "icon": "🗺️", "type": "state"},
-    {"text": "Kerala", "icon": "🗺️", "type": "state"},
-    {"text": "West Bengal", "icon": "🗺️", "type": "state"},
-    {"text": "Punjab", "icon": "🗺️", "type": "state"},
-    {"text": "Haryana", "icon": "🗺️", "type": "state"},
-    {"text": "Andhra Pradesh", "icon": "🗺️", "type": "state"},
-    {"text": "Madhya Pradesh", "icon": "🗺️", "type": "state"},
-    {"text": "Bihar", "icon": "🗺️", "type": "state"},
+    # "States" (Using Countries/Regions for the European market)
+    {"text": "Ireland", "icon": "🗺️", "type": "state"},
+    {"text": "United Kingdom", "icon": "🗺️", "type": "state"},
+    {"text": "Germany", "icon": "🗺️", "type": "state"},
+    {"text": "Netherlands", "icon": "🗺️", "type": "state"},
+    {"text": "France", "icon": "🗺️", "type": "state"},
+    {"text": "Spain", "icon": "🗺️", "type": "state"},
+    {"text": "Sweden", "icon": "🗺️", "type": "state"},
+    {"text": "Switzerland", "icon": "🗺️", "type": "state"},
     
-    # Karnataka cities
-    {"text": "Mysore", "icon": "📍", "type": "city", "state": "Karnataka"},
-    {"text": "Hubli", "icon": "📍", "type": "city", "state": "Karnataka"},
-    {"text": "Mangalore", "icon": "📍", "type": "city", "state": "Karnataka"},
-    {"text": "Belgaum", "icon": "📍", "type": "city", "state": "Karnataka"},
-    {"text": "Davangere", "icon": "📍", "type": "city", "state": "Karnataka"},
+    # Ireland Cities
+    {"text": "Galway", "icon": "📍", "type": "city", "state": "Ireland"},
+    {"text": "Limerick", "icon": "📍", "type": "city", "state": "Ireland"},
+    {"text": "Waterford", "icon": "📍", "type": "city", "state": "Ireland"},
     
-    # Maharashtra cities
-    {"text": "Nagpur", "icon": "📍", "type": "city", "state": "Maharashtra"},
-    {"text": "Nashik", "icon": "📍", "type": "city", "state": "Maharashtra"},
-    {"text": "Aurangabad", "icon": "📍", "type": "city", "state": "Maharashtra"},
-    {"text": "Kolhapur", "icon": "📍", "type": "city", "state": "Maharashtra"},
-    {"text": "Solapur", "icon": "📍", "type": "city", "state": "Maharashtra"},
+    # UK Cities
+    {"text": "Belfast", "icon": "📍", "type": "city", "state": "United Kingdom"},
+    {"text": "Edinburgh", "icon": "📍", "type": "city", "state": "United Kingdom"},
+    {"text": "Manchester", "icon": "📍", "type": "city", "state": "United Kingdom"},
+    {"text": "Cambridge", "icon": "📍", "type": "city", "state": "United Kingdom"},
+    {"text": "Bristol", "icon": "📍", "type": "city", "state": "United Kingdom"},
     
-    # Tamil Nadu cities
-    {"text": "Coimbatore", "icon": "📍", "type": "city", "state": "Tamil Nadu"},
-    {"text": "Madurai", "icon": "📍", "type": "city", "state": "Tamil Nadu"},
-    {"text": "Salem", "icon": "📍", "type": "city", "state": "Tamil Nadu"},
-    {"text": "Tiruchirappalli", "icon": "📍", "type": "city", "state": "Tamil Nadu"},
-    {"text": "Vellore", "icon": "📍", "type": "city", "state": "Tamil Nadu"},
+    # Germany Cities
+    {"text": "Munich", "icon": "📍", "type": "city", "state": "Germany"},
+    {"text": "Frankfurt", "icon": "📍", "type": "city", "state": "Germany"},
+    {"text": "Hamburg", "icon": "📍", "type": "city", "state": "Germany"},
     
-    # Uttar Pradesh cities
-    {"text": "Lucknow", "icon": "📍", "type": "city", "state": "Uttar Pradesh"},
-    {"text": "Kanpur", "icon": "📍", "type": "city", "state": "Uttar Pradesh"},
-    {"text": "Agra", "icon": "📍", "type": "city", "state": "Uttar Pradesh"},
-    {"text": "Varanasi", "icon": "📍", "type": "city", "state": "Uttar Pradesh"},
-    {"text": "Meerut", "icon": "📍", "type": "city", "state": "Uttar Pradesh"},
+    # Netherlands Cities
+    {"text": "Rotterdam", "icon": "📍", "type": "city", "state": "Netherlands"},
+    {"text": "The Hague", "icon": "📍", "type": "city", "state": "Netherlands"},
+    {"text": "Utrecht", "icon": "📍", "type": "city", "state": "Netherlands"},
     
-    # Andhra Pradesh cities
-    {"text": "Vijayawada", "icon": "📍", "type": "city", "state": "Andhra Pradesh"},
-    {"text": "Visakhapatnam", "icon": "📍", "type": "city", "state": "Andhra Pradesh"},
-    {"text": "Tirupati", "icon": "📍", "type": "city", "state": "Andhra Pradesh"},
-    {"text": "Guntur", "icon": "📍", "type": "city", "state": "Andhra Pradesh"},
-    {"text": "Nellore", "icon": "📍", "type": "city", "state": "Andhra Pradesh"},
+    # France Cities
+    {"text": "Lyon", "icon": "📍", "type": "city", "state": "France"},
+    {"text": "Toulouse", "icon": "📍", "type": "city", "state": "France"},
     
-    # West Bengal cities
-    {"text": "Kolkata", "icon": "📍", "type": "city", "state": "West Bengal"},
-    {"text": "Darjeeling", "icon": "📍", "type": "city", "state": "West Bengal"},
-    {"text": "Siliguri", "icon": "📍", "type": "city", "state": "West Bengal"},
-    {"text": "Durgapur", "icon": "📍", "type": "city", "state": "West Bengal"},
-    {"text": "Asansol", "icon": "📍", "type": "city", "state": "West Bengal"},
-    
-    # Gujarat cities
-    {"text": "Ahmedabad", "icon": "📍", "type": "city", "state": "Gujarat"},
-    {"text": "Surat", "icon": "📍", "type": "city", "state": "Gujarat"},
-    {"text": "Vadodara", "icon": "📍", "type": "city", "state": "Gujarat"},
-    {"text": "Rajkot", "icon": "📍", "type": "city", "state": "Gujarat"},
-    {"text": "Bhavnagar", "icon": "📍", "type": "city", "state": "Gujarat"},
-    
-    # Rajasthan cities
-    {"text": "Jaipur", "icon": "📍", "type": "city", "state": "Rajasthan"},
-    {"text": "Jodhpur", "icon": "📍", "type": "city", "state": "Rajasthan"},
-    {"text": "Udaipur", "icon": "📍", "type": "city", "state": "Rajasthan"},
-    {"text": "Kota", "icon": "📍", "type": "city", "state": "Rajasthan"},
-    {"text": "Ajmer", "icon": "📍", "type": "city", "state": "Rajasthan"},
-    
-    # Kerala cities
-    {"text": "Kochi", "icon": "📍", "type": "city", "state": "Kerala"},
-    {"text": "Thiruvananthapuram", "icon": "📍", "type": "city", "state": "Kerala"},
-    {"text": "Kozhikode", "icon": "📍", "type": "city", "state": "Kerala"},
-    {"text": "Thrissur", "icon": "📍", "type": "city", "state": "Kerala"},
-    {"text": "Alappuzha", "icon": "📍", "type": "city", "state": "Kerala"},
-    
-    # Punjab cities
-    {"text": "Amritsar", "icon": "📍", "type": "city", "state": "Punjab"},
-    {"text": "Ludhiana", "icon": "📍", "type": "city", "state": "Punjab"},
-    {"text": "Jalandhar", "icon": "📍", "type": "city", "state": "Punjab"},
-    {"text": "Patiala", "icon": "📍", "type": "city", "state": "Punjab"},
-    {"text": "Bathinda", "icon": "📍", "type": "city", "state": "Punjab"},
-    
-    # Haryana cities
-    {"text": "Faridabad", "icon": "📍", "type": "city", "state": "Haryana"},
-    {"text": "Panipat", "icon": "📍", "type": "city", "state": "Haryana"},
-    {"text": "Ambala", "icon": "📍", "type": "city", "state": "Haryana"},
-    {"text": "Karnal", "icon": "📍", "type": "city", "state": "Haryana"},
-    {"text": "Hisar", "icon": "📍", "type": "city", "state": "Haryana"},
-    
-    # Northeast cities
-    {"text": "Guwahati", "icon": "📍", "type": "city", "state": "Assam"},
-    {"text": "Shillong", "icon": "📍", "type": "city", "state": "Meghalaya"},
-    {"text": "Imphal", "icon": "📍", "type": "city", "state": "Manipur"},
-    {"text": "Aizawl", "icon": "📍", "type": "city", "state": "Mizoram"},
-    {"text": "Gangtok", "icon": "📍", "type": "city", "state": "Sikkim"},
-    
-    # Union Territories
-    {"text": "Chandigarh", "icon": "📍", "type": "city", "state": "Chandigarh"},
-    {"text": "Port Blair", "icon": "📍", "type": "city", "state": "Andaman and Nicobar Islands"},
-    {"text": "Shimla", "icon": "📍", "type": "city", "state": "Himachal Pradesh"},
-    {"text": "Dehradun", "icon": "📍", "type": "city", "state": "Uttarakhand"},
-    {"text": "Itanagar", "icon": "📍", "type": "city", "state": "Arunachal Pradesh"}
+    # Other Major EU Tech Hubs
+    {"text": "Stockholm", "icon": "📍", "type": "city", "state": "Sweden"},
+    {"text": "Zurich", "icon": "📍", "type": "city", "state": "Switzerland"},
+    {"text": "Geneva", "icon": "📍", "type": "city", "state": "Switzerland"},
+    {"text": "Barcelona", "icon": "📍", "type": "city", "state": "Spain"},
+    {"text": "Madrid", "icon": "📍", "type": "city", "state": "Spain"}
 ]
 
-# Function to get cities by state
+# Function to get cities by state/country
 def get_cities_by_state(state_name):
-    """Get list of cities for a specific state"""
+    """Get list of cities for a specific state/country"""
     return [loc for loc in LOCATION_SUGGESTIONS if loc.get("type") == "city" and loc.get("state") == state_name]
 
-# Function to get all states
+# Function to get all states/countries
 def get_all_states():
-    """Get list of all states"""
+    """Get list of all states/countries"""
     return [loc for loc in LOCATION_SUGGESTIONS if loc.get("type") == "state"]
 
 # Job types
@@ -207,19 +139,19 @@ JOB_TYPES = [
 # Experience levels
 EXPERIENCE_RANGES = [
     {"id": "all", "text": "All Levels"},
-    {"id": "fresher", "text": "Fresher"},
-    {"id": "1-3", "text": "1-3 years"},
-    {"id": "3-5", "text": "3-5 years"},
-    {"id": "5-7", "text": "5-7 years"},
-    {"id": "7+", "text": "7+ years"}
+    {"id": "junior", "text": "Junior (0-2 years)"},
+    {"id": "mid", "text": "Mid-Level (2-5 years)"},
+    {"id": "senior", "text": "Senior (5-8 years)"},
+    {"id": "lead", "text": "Lead (8-12 years)"},
+    {"id": "principal", "text": "Principal/Director (12+ years)"}
 ]
 
-# Salary ranges
+# Salary ranges (Updated to Euros)
 SALARY_RANGES = [
     {"id": "all", "text": "All Ranges"},
-    {"id": "0-3", "text": "0-3 LPA"},
-    {"id": "3-6", "text": "3-6 LPA"},
-    {"id": "6-10", "text": "6-10 LPA"},
-    {"id": "10-15", "text": "10-15 LPA"},
-    {"id": "15+", "text": "15+ LPA"}
+    {"id": "0-30k", "text": "Up to €30k"},
+    {"id": "30k-50k", "text": "€30k - €50k"},
+    {"id": "50k-80k", "text": "€50k - €80k"},
+    {"id": "80k-120k", "text": "€80k - €120k"},
+    {"id": "120k+", "text": "€120k+"}
 ]
