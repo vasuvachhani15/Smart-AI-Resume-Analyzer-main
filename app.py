@@ -489,9 +489,7 @@ class ResumeApp:
             st.markdown("""
             <p style='text-align: center;'>
                 Powered by <b>Streamlit</b> and <b>Google Gemini AI</b> | Developed by 
-                <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" target="_blank" style='text-decoration: none; color: #FFFFFF'>
-                    <b>Het Patel (Hunterdii)</b>
-                </a>
+                <b>Victor</b>
             </p>
             <p style='text-align: center; font-size: 12px; color: #888888;'>
                 "Every star counts! If you find this project helpful, please consider starring the repo to help it reach more people."
@@ -546,9 +544,6 @@ class ResumeApp:
     def render_dashboard(self):
         """Render the dashboard page"""
         self.dashboard_manager.render_dashboard()
-
-        st.toast("Check out these repositories: [Awesome Hacking](https://github.com/Hunterdii/Awesome-Hacking)", icon="ℹ️")
-
 
     def render_empty_state(self, icon, message):
         """Render an empty state with icon and message"""
@@ -1001,8 +996,6 @@ class ResumeApp:
                 print(f"Full traceback: {traceback.format_exc()}")
                 st.error(f"❌ Error preparing resume data: {str(e)}")
 
-        st.toast("Check out these repositories: [30-Days-Of-Rust](https://github.com/Hunterdii/30-Days-Of-Rust)", icon="ℹ️")
-
     def render_about(self):
         """Render the about page"""
         # Apply modern styles
@@ -1190,9 +1183,6 @@ class ResumeApp:
             </div>
         """, unsafe_allow_html=True)
 
-
-
-
         # Vision Section
         st.markdown("""
             <div class="vision-section">
@@ -1238,8 +1228,6 @@ class ResumeApp:
                 </a>
             </div>
         """, unsafe_allow_html=True)
-
-        st.toast("Check out these repositories: [Iriswise](https://github.com/Hunterdii/Iriswise)", icon="ℹ️")
 
     def render_analyzer(self):
         """Render the resume analyzer page"""
@@ -1477,8 +1465,6 @@ class ResumeApp:
                         ), unsafe_allow_html=True)
 
                         st.markdown("</div>", unsafe_allow_html=True)
-
-                        # self.display_analysis_results(analysis_results)
 
                         # Skills Match Card
                         st.markdown("""
@@ -2050,14 +2036,6 @@ class ResumeApp:
                                 plot_bgcolor='rgba(0,0,0,0)',
                                 font=dict(
     color="#ffffff", size=14, family="Arial, sans-serif"),
-                                # title={
-                                #     # 'text': 'Resume Score Distribution',
-                                #     'y': 0.95,
-                                #     'x': 0.5,
-                                #     'xanchor': 'center',
-                                #     'yanchor': 'top',
-                                #     'font': {'size': 22, 'color': 'white', 'family': 'Arial, sans-serif', 'weight': 'bold'}
-                                # },
                                 xaxis=dict(
                                     title=dict(
     text="Score Range", font=dict(
@@ -2798,9 +2776,6 @@ class ResumeApp:
                             import traceback as tb
                             st.code(tb.format_exc())
 
-        st.toast("Check out these repositories: [Awesome Java](https://github.com/Hunterdii/Awesome-Java)", icon="ℹ️")
-
-
     def render_home(self):
         apply_modern_styles()
         
@@ -2832,8 +2807,6 @@ class ResumeApp:
         )
         
         st.markdown('</div>', unsafe_allow_html=True)
-        
-        st.toast("Check out these repositories: [AI-Nexus(AI/ML)](https://github.com/Hunterdii/AI-Nexus)", icon="ℹ️")
 
         # Call-to-Action with Streamlit navigation
         col1, col2, col3 = st.columns([1, 1, 1])
@@ -2849,9 +2822,6 @@ class ResumeApp:
     def render_job_search(self):
         """Render the job search page"""
         render_job_search()
-
-        st.toast("Check out these repositories: [GeeksforGeeks-POTD](https://github.com/Hunterdii/GeeksforGeeks-POTD)", icon="ℹ️")
-
 
     def render_feedback_page(self):
         """Render the feedback page"""
@@ -2874,9 +2844,6 @@ class ResumeApp:
             
         with stats_tab:
             feedback_manager.render_feedback_stats()
-
-        st.toast("Check out these repositories: [TryHackMe Free Rooms](https://github.com/Hunterdii/tryhackme-free-rooms)", icon="ℹ️")
-
 
     def show_repo_notification(self):
         message = """
