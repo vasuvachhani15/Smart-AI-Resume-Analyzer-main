@@ -2844,6 +2844,32 @@ class ResumeApp:
         with stats_tab:
             feedback_manager.render_feedback_stats()
 
+
+    def show_repo_notification(self):
+        message = """
+<div style="background-color: #1e1e1e; border-radius: 10px; border: 1px solid #4b6cb7; padding: 10px; margin: 10px 0; color: white;">
+    <div style="margin-bottom: 10px;">Check out these other repositories:</div>
+    <div style="margin-bottom: 5px;"><b>Hacking Resources:</b></div>
+    <ul style="margin-top: 0; padding-left: 20px;">
+        <li><a href="https://github.com/Hunterdii/tryhackme-free-rooms" target="_blank" style="color: #4CAF50;">TryHackMe Free Rooms</a></li>
+        <li><a href="https://github.com/Hunterdii/Awesome-Hacking" target="_blank" style="color: #4CAF50;">Awesome Hacking</a></li>
+    </ul>
+    <div style="margin-bottom: 5px;"><b>Programming Languages:</b></div>
+    <ul style="margin-top: 0; padding-left: 20px;">
+        <li><a href="https://github.com/Hunterdii/Awesome-Java" target="_blank" style="color: #4CAF50;">Awesome Java</a></li>
+        <li><a href="https://github.com/Hunterdii/30-Days-Of-Rust" target="_blank" style="color: #4CAF50;">30 Days Of Rust</a></li>
+    </ul>
+    <div style="margin-bottom: 5px;"><b>Data Structures & Algorithms:</b></div>
+    <ul style="margin-top: 0; padding-left: 20px;">
+        <li><a href="https://github.com/Hunterdii/GeeksforGeeks-POTD" target="_blank" style="color: #4CAF50;">GeeksforGeeks POTD</a></li>
+        <li><a href="https://github.com/Hunterdii/Leetcode-POTD" target="_blank" style="color: #4CAF50;">Leetcode POTD</a></li>
+    </ul>
+    <div style="margin-bottom: 5px;"><b>AI/ML Projects:</b></div>
+    <ul style="margin-top: 0; padding-left: 20px;">
+        <li><a href="https://github.com/Hunterdii/AI-Nexus" target="_blank" style="color: #4CAF50;">AI Nexus</a></li>
+    </ul>
+    
+</div>
 """
         st.sidebar.markdown(message, unsafe_allow_html=True)
 
