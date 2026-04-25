@@ -44,6 +44,14 @@ st.set_page_config(
     layout="wide"
 )
 
+st.markdown("""
+    <style>
+        /* Hide GitHub icon from toolbar */
+        [data-testid="stToolbarActions"] a[href*="github"] {
+            display: none !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 class ResumeApp:
     def __init__(self):
@@ -2863,6 +2871,15 @@ class ResumeApp:
     def main(self):
         """Main application entry point"""
         self.apply_global_styles()
+
+        st.markdown("""
+        <style>
+            /* Hide GitHub icon from toolbar */
+            [data-testid="stToolbarActions"] a[href*="github"] {
+                display: none !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
         
         # Admin login/logout in sidebar
         with st.sidebar:
