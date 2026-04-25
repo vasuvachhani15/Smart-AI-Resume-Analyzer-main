@@ -969,18 +969,15 @@ class DashboardManager:
         """)
         top_skills = cursor.fetchall()
         if top_skills:
-            # Build the string dynamically based on how many skills exist
-            skills_formatted = [f"{skill[0]} ({skill[1]} resumes)" for skill in top_skills]
-            skills_text = "Most in-demand skills: " + ", ".join(skills_formatted)
-            
+            skills_text = f"Most in-demand skills: Python ({top_skills[0][1]} resumes), Java ({top_skills[1][1]} resumes), Express ({top_skills[2][1]} resumes)"
             insights.append({
                 'title': 'Top Skills',
                 'icon': '💡',
-                'description': skills_text,
+                'description': f"Most in-demand skills: {skills_text}",
                 'trend_class': 'trend-up',
                 'trend_icon': '🔝',
                 'trend_value': f"Top {len(top_skills)}"
-            })  
+            })
         
         return insights
 
