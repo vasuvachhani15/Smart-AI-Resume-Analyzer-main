@@ -46,8 +46,7 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-        /* Hide GitHub icon from toolbar */
-        [data-testid="stToolbarActions"] a[href*="github"] {
+        [data-testid="stToolbarActions"] {
             display: none !important;
         }
     </style>
