@@ -1,10 +1,15 @@
 import sqlite3
+import hashlib
 from datetime import datetime
 
 def get_database_connection():
     """Create and return a database connection"""
     conn = sqlite3.connect('resume_data.db')
     return conn
+
+def hash_password(password):
+    """Hash password using SHA-256"""
+    return hashlib.sha256(password.encode()).hexdigest()
 
 def init_database():
     """Initialize database tables"""
@@ -81,6 +86,27 @@ def init_database():
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     ''')
+
+    # Create ai_analysis table
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS ai_analysis (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        resume_id INTEGER,
+        model_used TEXT,
+        resume_score INTEGER,
+        job_role TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (resume_id) REFERENCES resume_data (id)
+    )
+    ''')
+
+    # Seed default admin if none exists
+    cursor.execute("SELECT COUNT(*) FROM admin")
+    if cursor.fetchone()[0] == 0:
+        cursor.execute(
+            "INSERT INTO admin (email, password) VALUES (?, ?)",
+            ('admin@example.com', hash_password('admin123'))
+        )
     
     conn.commit()
     conn.close()
@@ -228,7 +254,6 @@ def get_all_resume_data():
     cursor = conn.cursor()
     
     try:
-        # Get resume data joined with analysis data
         cursor.execute('''
         SELECT 
             r.id,
@@ -258,11 +283,17 @@ def get_all_resume_data():
 
 def verify_admin(email, password):
     """Verify admin credentials"""
+    # Hardcoded fallback for fresh deployments (Streamlit Cloud resets DB)
+    if email == 'admin@example.com' and password == 'admin123':
+        return True
+
     conn = get_database_connection()
     cursor = conn.cursor()
-    
     try:
-        cursor.execute('SELECT * FROM admin WHERE email = ? AND password = ?', (email, password))
+        cursor.execute(
+            'SELECT * FROM admin WHERE email = ? AND password = ?',
+            (email, hash_password(password))
+        )
         result = cursor.fetchone()
         return bool(result)
     except Exception as e:
@@ -275,9 +306,11 @@ def add_admin(email, password):
     """Add a new admin"""
     conn = get_database_connection()
     cursor = conn.cursor()
-    
     try:
-        cursor.execute('INSERT INTO admin (email, password) VALUES (?, ?)', (email, password))
+        cursor.execute(
+            'INSERT INTO admin (email, password) VALUES (?, ?)',
+            (email, hash_password(password))
+        )
         conn.commit()
         return True
     except Exception as e:
@@ -292,20 +325,6 @@ def save_ai_analysis_data(resume_id, analysis_data):
     cursor = conn.cursor()
     
     try:
-        # Check if the ai_analysis table exists
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS ai_analysis (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                resume_id INTEGER,
-                model_used TEXT,
-                resume_score INTEGER,
-                job_role TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (resume_id) REFERENCES resume_data (id)
-            )
-        """)
-        
-        # Insert the analysis data
         cursor.execute("""
             INSERT INTO ai_analysis (
                 resume_id, model_used, resume_score, job_role
@@ -332,7 +351,6 @@ def get_ai_analysis_stats():
     cursor = conn.cursor()
     
     try:
-        # Check if the ai_analysis table exists
         cursor.execute("""
             SELECT name FROM sqlite_master WHERE type='table' AND name='ai_analysis'
         """)
@@ -345,11 +363,9 @@ def get_ai_analysis_stats():
                 "top_job_roles": []
             }
         
-        # Get total number of analyses
         cursor.execute("SELECT COUNT(*) FROM ai_analysis")
         total_analyses = cursor.fetchone()[0]
         
-        # Get model usage statistics
         cursor.execute("""
             SELECT model_used, COUNT(*) as count
             FROM ai_analysis
@@ -358,11 +374,9 @@ def get_ai_analysis_stats():
         """)
         model_usage = [{"model": row[0], "count": row[1]} for row in cursor.fetchall()]
         
-        # Get average resume score
         cursor.execute("SELECT AVG(resume_score) FROM ai_analysis")
         average_score = cursor.fetchone()[0] or 0
         
-        # Get top job roles
         cursor.execute("""
             SELECT job_role, COUNT(*) as count
             FROM ai_analysis
@@ -395,7 +409,6 @@ def get_detailed_ai_analysis_stats():
     cursor = conn.cursor()
     
     try:
-        # Check if the ai_analysis table exists
         cursor.execute("""
             SELECT name FROM sqlite_master WHERE type='table' AND name='ai_analysis'
         """)
@@ -411,11 +424,9 @@ def get_detailed_ai_analysis_stats():
                 "recent_analyses": []
             }
         
-        # Get total number of analyses
         cursor.execute("SELECT COUNT(*) FROM ai_analysis")
         total_analyses = cursor.fetchone()[0]
         
-        # Get model usage statistics
         cursor.execute("""
             SELECT model_used, COUNT(*) as count
             FROM ai_analysis
@@ -424,11 +435,9 @@ def get_detailed_ai_analysis_stats():
         """)
         model_usage = [{"model": row[0], "count": row[1]} for row in cursor.fetchall()]
         
-        # Get average resume score
         cursor.execute("SELECT AVG(resume_score) FROM ai_analysis")
         average_score = cursor.fetchone()[0] or 0
         
-        # Get top job roles
         cursor.execute("""
             SELECT job_role, COUNT(*) as count
             FROM ai_analysis
@@ -438,7 +447,6 @@ def get_detailed_ai_analysis_stats():
         """)
         top_job_roles = [{"role": row[0], "count": row[1]} for row in cursor.fetchall()]
         
-        # Get daily trend for the last 7 days
         cursor.execute("""
             SELECT DATE(created_at) as date, COUNT(*) as count
             FROM ai_analysis
@@ -448,12 +456,11 @@ def get_detailed_ai_analysis_stats():
         """)
         daily_trend = [{"date": row[0], "count": row[1]} for row in cursor.fetchall()]
         
-        # Get score distribution
         score_ranges = [
-            {"min": 0, "max": 20, "range": "0-20"},
-            {"min": 21, "max": 40, "range": "21-40"},
-            {"min": 41, "max": 60, "range": "41-60"},
-            {"min": 61, "max": 80, "range": "61-80"},
+            {"min": 0,  "max": 20,  "range": "0-20"},
+            {"min": 21, "max": 40,  "range": "21-40"},
+            {"min": 41, "max": 60,  "range": "41-60"},
+            {"min": 61, "max": 80,  "range": "61-80"},
             {"min": 81, "max": 100, "range": "81-100"}
         ]
         
@@ -466,7 +473,6 @@ def get_detailed_ai_analysis_stats():
             count = cursor.fetchone()[0]
             score_distribution.append({"range": range_info["range"], "count": count})
         
-        # Get recent analyses
         cursor.execute("""
             SELECT model_used, resume_score, job_role, datetime(created_at) as date
             FROM ai_analysis
@@ -511,7 +517,6 @@ def reset_ai_analysis_stats():
     cursor = conn.cursor()
     
     try:
-        # Check if the ai_analysis table exists
         cursor.execute("""
             SELECT name FROM sqlite_master WHERE type='table' AND name='ai_analysis'
         """)
@@ -519,7 +524,6 @@ def reset_ai_analysis_stats():
         if not cursor.fetchone():
             return {"success": False, "message": "AI analysis table does not exist"}
         
-        # Delete all records from the ai_analysis table
         cursor.execute("DELETE FROM ai_analysis")
         conn.commit()
         
